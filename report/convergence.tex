@@ -1,0 +1,38 @@
+\subsection{HBG}
+HBG is not a descent algorithm, as the objective function does not necessarily decrease at each step. Still, many convergence results can be proven.  
+
+\ref{bibitem:polyak} shows that for $L$-smooth and $\tau$-convex functions, the best possible $\alpha$ and $\beta$ can be computed analytically. This gives the following optimal values:
+\[
+\alpha^* = \left(\frac{2}{\sqrt{L} + \sqrt{\tau}}\right)^2,
+\qquad
+\beta^* = \left(\frac{\sqrt{L} - \sqrt{\tau}}{\sqrt{L} + \sqrt{\tau}}\right)^2.
+\]
+For these values of the hyperparameters, the algorithm generates a sequence of points $\{\theta^{(i)}\}$ which converges linearly to the optimal $\theta^*$:
+\[
+\left\Vert \theta^{(i+1)} - \theta^* \right\Vert 
+\leq 
+r \left\Vert \theta^{(i)} - \theta^* \right\Vert,
+\qquad r = \frac{\sqrt{L} - \sqrt{\tau}}{\sqrt{L} + \sqrt{\tau}}.
+\]
+
+Thus, the number of steps required to reach relative $\epsilon$-accuracy, i.e. $\frac{\Vert\theta^{(i)}\Vert}{\Vert\theta^{(0)}\Vert} < \epsilon$, is $\mathcal{O} \left(\sqrt{\frac{L}{\tau}} \log \frac{1}{\epsilon}\right)$. Note that $L$ and $\tau$ are usually unknown at optimization time, so grid search may be required.
+
+For non-convex functions the convergence results are much weaker: \ref{bibitem:ochs} proves that HGB convergence is ensured for L-smooth functions as long as $\beta \in [0, 1)$ and $\alpha \in \left(0, 2\frac{1-\beta}{L}\right)$, as a special case of the proof for the more general iPiano optimization algorithm.
+
+Unfortunately, our loss function is not L-smooth (indeed, it is not even differentiable). Theoretical convergence is then not ensured a priori.
+
+
+\subsection{CFM}
+\label{cfm_conv}
+In \ref{bibitem:boyd} many convergence results are given for subgradient algorithms in case of no deflection ($\gamma = 0$). In particular, suppose that $J$ is convex and that at each epoch $i$ the norm of its subrgadient is bounded by $G \in \R$:
+\[
+    \Vert\g^{(i)}\Vert = \Vert\nabla_\theta J(\theta^{(i)})\Vert \leq G.
+\]
+Then, it can be proven that the the subgradient method with Polyak step size converges ($J_{\text{best}}^{(i)} \rightarrow J^*$), and the number of steps needed before we can guarantee relative $\epsilon$-accuracy is proven to be optimal, and equal to $\mathcal{O}\left(\left(\frac{GR}{\epsilon}\right)^2\right)$, where $R \in \R: R \geq \Vert \theta^{(1)} - \theta^* \Vert$ 
+is an upper bound on the distance between the starting point and the optimal solution.
+
+Moreover, it can be proven that this convergence result also holds for the subgradient method with Polyak step size, standing the following assumptions on the threshold of the target level: $\delta^{(i)} > 0$, $\delta^{(i)} \rightarrow 0$ and $\sum_{i=1}^{\infty} \delta^{(i)} = \infty$. 
+
+\ref{bibitem:cfm} generalizes these results to CFM deflected subgradient, given the same assumptions. Specifically, it shows that CFM is theoretically at least as good as the non-deflected subgradient algorithm. Formally, it is proven that CFM deflected direction has a smaller angle towards the optimal value than the non deflected subgradient. It follows that the convergence proofs for the non deflected subgradient algorithm work for CFM as well, and indeed that CFM can be expected to perform better computationally. Further theoretical results can be proven: \ref{bibitem:brannlund} proves the optimality of the parameters choice of CFM, while \ref{bibitem:kim} proves stronger convergence results than those originally derived by the authors.
+
+However, our loss function is not convex, so these results do not apply to our problem, and theoretical convergence is not ensured a priori.

@@ -265,7 +265,7 @@ class FullyConnectedLayer(Layer):
         """
 
         self._input = input
-        return np.dot(self._input, self._weights) + self._biases
+        return np.matmul(self._input, self._weights) + self._biases
 
     def after_forward_propagation(self, loss):
 
@@ -318,8 +318,8 @@ class FullyConnectedLayer(Layer):
 
         """
 
-        grad_input = np.dot(grad_output, self._weights.T) # (np.ndarray, shape: (batch_size, n_input)): derivative of the error function with respect to the inputs of the layer
-        grad_weights = np.dot(self._input.T, grad_output) + regularization_function.derivative(self._weights) # (np.ndarray, shape: (n_input, n_output)): derivative of the loss function with respect to the weights of the layer
+        grad_input = np.matmul(grad_output, self._weights.T) # (np.ndarray, shape: (batch_size, n_input)): derivative of the error function with respect to the inputs of the layer
+        grad_weights = np.matmul(self._input.T, grad_output) + regularization_function.derivative(self._weights) # (np.ndarray, shape: (n_input, n_output)): derivative of the loss function with respect to the weights of the layer
         grad_biases = grad_output.sum(axis = 0, keepdims = True) # (np.ndarray, shape: (1, n_output)): derivative of the loss function with respect to the biases of the layer
         grad_params = np.concatenate((grad_biases, grad_weights))
         params_update = self.optimizer.optimize(grad_params)

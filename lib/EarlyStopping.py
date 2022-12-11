@@ -54,7 +54,7 @@ class EarlyStopping():
 
         if type(metric) == str:
             if metric in metrics_aliases:
-                self.metric = metrics_aliases[metric]
+                self.metric = metrics_aliases[metric]()
             elif metric == "loss":
                 self.metric = metric
             else:

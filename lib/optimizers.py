@@ -277,8 +277,8 @@ class CFM(Optimizer):
 
 
 aliases = {
-	"hbg": HBG(),
-	"HBG": HBG(),
-	"cfm": CFM(),
-	"CFM": CFM()
+	"hbg": HBG,
+	"HBG": HBG,
+	"cfm": CFM,
+	"CFM": CFM
 }

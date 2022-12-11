@@ -288,18 +288,18 @@ class ElasticNet(RegularizationFunction):
 
 
 aliases = {
-    "null": NullRegularization(),
-    "Null": NullRegularization(),
-    "zero": NullRegularization(),
-    "Zero": NullRegularization(),
-    "l1": Lasso(),
-    "L1": Lasso(),
-    "lasso": Lasso(),
-    "Lasso": Lasso(),
-    "l2": Ridge(),
-    "L2": Ridge(),
-    "ridge": Ridge(),
-    "Ridge": Ridge(),
-    "elastic_net": ElasticNet(),
-    "ElasticNet": ElasticNet()
+    "null": NullRegularization,
+    "Null": NullRegularization,
+    "zero": NullRegularization,
+    "Zero": NullRegularization,
+    "l1": Lasso,
+    "L1": Lasso,
+    "lasso": Lasso,
+    "Lasso": Lasso,
+    "l2": Ridge,
+    "L2": Ridge,
+    "ridge": Ridge,
+    "Ridge": Ridge,
+    "elastic_net": ElasticNet,
+    "ElasticNet": ElasticNet
 }

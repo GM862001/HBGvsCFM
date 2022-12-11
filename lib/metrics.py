@@ -83,7 +83,6 @@ class Accuracy(Metric):
         return "accuracy"
 
 
-
 metrics_aliases = {
     "acc": Accuracy,
     "accuracy": Accuracy
@@ -183,7 +182,6 @@ class MSE(ErrorFunction):
 		"""
 
         return "MSE"
-
 
 
 def mee(y_true, y_pred):

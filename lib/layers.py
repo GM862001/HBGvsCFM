@@ -274,7 +274,7 @@ class FullyConnectedLayer(Layer):
 
         Parameters
         ----------
-		loss (float): the value of the loss at the current epoch of training.
+	loss (float): the value of the loss at the current epoch of training.
 
         """
 

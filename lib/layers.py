@@ -365,7 +365,7 @@ class ActivationLayer(Layer):
         if type(activation) == str:
             if activation not in activation_functions_aliases:
                 raise ValueError("Unknown activation function")
-            self.activation = activation_functions_aliases[activation]
+            self.activation = activation_functions_aliases[activation]()
         elif issubclass(type(activation), ActivationFunction):
             self.activation = activation
         else:

@@ -98,7 +98,7 @@ class Model():
 
         if type(metric) == str:
             if metric in metrics_aliases:
-                return metrics_aliases[metric](y, y_pred)
+                return metrics_aliases[metric]()(y, y_pred)
             elif metric == "loss":
                 return self.compute_loss(y, y_pred)
             else:
@@ -283,7 +283,7 @@ class Sequential(Model):
         if type(error_function) == str:
             if error_function not in error_functions_aliases:
                 raise ValueError("Unknown error function")
-            self._error_function = error_functions_aliases[error_function]
+            self._error_function = error_functions_aliases[error_function]()
         elif issubclass(type(error_function), ErrorFunction):
             self._error_function = error_function
         else:
@@ -292,7 +292,7 @@ class Sequential(Model):
         if type(regularization_function) == str:
             if regularization_function not in regularization_functions_aliases:
                 raise ValueError("Unknown error function")
-            self._regularization_function = regularization_functions_aliases[regularization_function]
+            self._regularization_function = regularization_functions_aliases[regularization_function]()
         elif issubclass(type(regularization_function), RegularizationFunction):
             self._regularization_function = regularization_function
         else:
@@ -325,7 +325,7 @@ class Sequential(Model):
             if optimizer not in optimizers_aliases:
                 raise ValueError("Unknown optimizer")
             else:
-                optimizer = optimizers_aliases[optimizer]
+                optimizer = optimizers_aliases[optimizer]()
         elif issubclass(type(optimizer), Optimizer):
             optimizer = optimizer
         else:
@@ -336,7 +336,7 @@ class Sequential(Model):
             if type(metric) == str:
                 if metric not in metrics_aliases:
                     raise ValueError("Unknown metric")
-                metrics[i] = metrics_aliases[metric]
+                metrics[i] = metrics_aliases[metric]()
             elif not issubclass(type(metric), Metric):
                 raise ValueError("Metrics must be Metric objects or string aliases for them.")
 

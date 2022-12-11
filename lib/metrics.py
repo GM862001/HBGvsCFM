@@ -74,19 +74,19 @@ class Accuracy(Metric):
     def __repr__(self):
 
         """
-		Returns a readable representation of the accuracy.
+	Returns a readable representation of the accuracy.
 
-		Returns (str): a readable representation of the accuracy.
+	Returns (str): a readable representation of the accuracy.
 
-		"""
+	"""
 
         return "accuracy"
 
 
 
 metrics_aliases = {
-    "acc": Accuracy(),
-    "accuracy": Accuracy()
+    "acc": Accuracy,
+    "accuracy": Accuracy
 }
 
 
@@ -251,10 +251,10 @@ class MEE(ErrorFunction):
 
 
 error_functions_aliases = {
-    "MSE": MSE(),
-    "mse": MSE(),
-    "MEE": MEE(),
-    "mee": MEE()
+    "MSE": MSE,
+    "mse": MSE,
+    "MEE": MEE,
+    "mee": MEE
 }
 
 metrics_aliases.update(error_functions_aliases)

@@ -231,10 +231,10 @@ class Tanh(ActivationFunction):
 
 
 aliases = {
-    "sigm": Sigmoid(),
-    "sigmoid": Sigmoid(),
-    "relu": ReLU(),
-    "ReLU": ReLU(),
-    "tanh": Tanh(),
-    "identity": Identity()
+    "sigm": Sigmoid,
+    "sigmoid": Sigmoid,
+    "relu": ReLU,
+    "ReLU": ReLU,
+    "tanh": Tanh,
+    "identity": Identity
 }

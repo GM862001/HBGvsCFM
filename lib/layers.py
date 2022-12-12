@@ -17,8 +17,8 @@ class Layer():
         Sets the parameters of the layer to the given values, if any.
     initialize(self, optimizer):
         Initializes the layer before the start of training, if needed.
-	after_forward_propagation(self, loss):
-		Updates the parameters of the layer at the end of each forward pass, if needed.
+    after_forward_propagation(self, loss):
+	Updates the parameters of the layer at the end of each forward pass, if needed.
     on_epoch_end(self):
         Updates the parameters of the layer at the end of each epoch of training, if needed.
     compute_regularization(self, regularization_function) -> float:
@@ -118,7 +118,7 @@ class Layer():
 
         Parameters
         ----------
-		loss (float): the value of the loss at the current epoch of training.
+	loss (float): the value of the loss at the current epoch of training.
 
         """
 
@@ -172,8 +172,8 @@ class FullyConnectedLayer(Layer):
         Forward propagates through the layer.
     compute_regularization(self, regularization_function) -> float:
         Computes the value of the regularization term of the loss function due to the parameters of the layer.
-	after_forward_propagation(self, loss):
-		Updates the parameters of the layer at the end of each forward pass.
+    after_forward_propagation(self, loss):
+	Updates the parameters of the layer at the end of each forward pass.
     on_epoch_end(self, loss):
         Updates the parameters of the layer at the end of each epoch of training.
     backward(self, grad_output, loss_function):
@@ -429,8 +429,8 @@ class DenseLayer(Layer):
         Forward propagates through the layer.
     compute_regularization(self, regularization_function) -> float:
         Computes the value of the regularization term of the loss function due to the parameters of the layer.
-	after_forward_propagation(self, loss):
-		Updates the parameters of the layer at the end of each forward pass.
+    after_forward_propagation(self, loss):
+	Updates the parameters of the layer at the end of each forward pass.
     on_epoch_end(self, loss):
         Updates the parameters of the layer at the end of each epoch of training.
     backward(self, grad_output, regularization_function) -> np.ndarray:

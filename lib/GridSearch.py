@@ -78,7 +78,7 @@ class GridSearch():
         y (np.ndarray, shape: (training_set_size, n_output_features)): the training set ground truth.
         params_grid (dict): a dictionary whose keys are the fitting parameters to tune and whose values are the list of values to consider for each of them.
         X_test (np.ndarray, shape: (test_set_size, n_input_features)): the test set input features. Only used when the target dataset is the test one.
-        y_test (np.ndarray, shape: (test_set_size, n_output_features)): the test set ground trugh. Only used when the target dataset is the test one.
+        y_test (np.ndarray, shape: (test_set_size, n_output_features)): the test set ground truth. Only used when the target dataset is the test one.
         kfold (bool, default: False): whether to apply or not k-fold cross validation. Must only be used when the target dataset is the test one and no test set is provided.
         skfold (bool, default: False): whether to apply or not stratified k-fold cross validation. Must only be used when the target dataset is the test one and no test set is provided.
         test_split_ratio (float, default: 0.1): the ratio between the test set size and the training set one when the target dataset is the test one and no test set is provided.
